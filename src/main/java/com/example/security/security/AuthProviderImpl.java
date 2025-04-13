@@ -9,8 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
+import java.util.List;;
 
 @Component
 public class AuthProviderImpl implements AuthenticationProvider {
@@ -25,11 +24,11 @@ public class AuthProviderImpl implements AuthenticationProvider {
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName();
-        String password = authentication.getCredentials().toString();
+        Object password = authentication.getCredentials();
 
         UserDetails personDetails = personDetailsService.loadUserByUsername(username);
 
-        if (!password.equals(personDetails.getPassword())) {
+        if (!password.toString().equals(personDetails.getPassword())) {
             throw new BadCredentialsException("Incorrect password");
         }
 

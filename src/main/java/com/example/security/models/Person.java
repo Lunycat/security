@@ -34,4 +34,14 @@ public class Person {
 
     @Column(name = "password")
     private String password;
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", yearOfBirth=" + yearOfBirth +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }
