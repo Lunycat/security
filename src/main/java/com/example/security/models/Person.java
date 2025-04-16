@@ -9,13 +9,9 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 @Table(name = "people")
-@Getter
-@Setter
 public class Person {
 
     @Id
@@ -28,7 +24,7 @@ public class Person {
     @Column(name = "username")
     private String username;
 
-    @Min(value = 1900, message = "Год рождения должен быть больше, чем 1900 год")
+    @Min(value = 1900, message = "Год рождения должен быть меньше, чем 1900 год")
     @Column(name = "year_of_birth")
     private int yearOfBirth;
 
@@ -43,5 +39,37 @@ public class Person {
                 ", yearOfBirth=" + yearOfBirth +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getYearOfBirth() {
+        return yearOfBirth;
+    }
+
+    public void setYearOfBirth(int yearOfBirth) {
+        this.yearOfBirth = yearOfBirth;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
