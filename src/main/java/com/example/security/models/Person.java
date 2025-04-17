@@ -28,8 +28,12 @@ public class Person {
     @Column(name = "year_of_birth")
     private int yearOfBirth;
 
+    @Size(min = 6)
     @Column(name = "password")
     private String password;
+
+    @Column(name = "role")
+    private String role;
 
     @Override
     public String toString() {
@@ -71,5 +75,13 @@ public class Person {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

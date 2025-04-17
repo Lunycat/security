@@ -27,8 +27,9 @@ public class SecurityConfig {
         http
                 .userDetailsService(personDetailsService)
                 .authorizeHttpRequests(manager -> manager
+                        .requestMatchers("/admin").hasRole("ADMIN")
                         .requestMatchers("/auth/login", "/auth/registration","/error").permitAll()
-                        .anyRequest().authenticated())
+                        .anyRequest().hasAnyRole("USER", "ADMIN"))
                 .formLogin(form -> form
                         .loginPage("/auth/login")
                         .loginProcessingUrl("/process_login")
